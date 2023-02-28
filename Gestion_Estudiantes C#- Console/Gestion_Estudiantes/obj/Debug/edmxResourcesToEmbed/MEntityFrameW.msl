@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GESTION_ESTUDIANTESModelStoreContainer" CdmEntityContainer="GESTION_ESTUDIANTESEntities">
+    <EntitySetMapping Name="tbl_Asignatura">
+      <EntityTypeMapping TypeName="GESTION_ESTUDIANTESModel.tbl_Asignatura">
+        <MappingFragment StoreEntitySet="tbl_Asignatura">
+          <ScalarProperty Name="Nombre_Asig" ColumnName="Nombre_Asig" />
+          <ScalarProperty Name="Id_Asignatura" ColumnName="Id_Asignatura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Control_asistencia">
+      <EntityTypeMapping TypeName="GESTION_ESTUDIANTESModel.tbl_Control_asistencia">
+        <MappingFragment StoreEntitySet="tbl_Control_asistencia">
+          <ScalarProperty Name="matr_estudiante" ColumnName="matr_estudiante" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Id_Control_asistencia" ColumnName="Id_Control_asistencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Docente">
+      <EntityTypeMapping TypeName="GESTION_ESTUDIANTESModel.tbl_Docente">
+        <MappingFragment StoreEntitySet="tbl_Docente">
+          <ScalarProperty Name="Asig_Encargado" ColumnName="Asig_Encargado" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Docente" ColumnName="Id_Docente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Estudiante">
+      <EntityTypeMapping TypeName="GESTION_ESTUDIANTESModel.tbl_Estudiante">
+        <MappingFragment StoreEntitySet="tbl_Estudiante">
+          <ScalarProperty Name="Asignatura_activa" ColumnName="Asignatura_activa" />
+          <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

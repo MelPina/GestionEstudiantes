@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GESTION_ESTUDIANTESModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Asignatura">
+          <Key>
+            <PropertyRef Name="Id_Asignatura" />
+          </Key>
+          <Property Name="Id_Asignatura" Type="int" Nullable="false" />
+          <Property Name="Nombre_Asig" Type="varchar" MaxLength="75" />
+        </EntityType>
+        <EntityType Name="tbl_Control_asistencia">
+          <Key>
+            <PropertyRef Name="Id_Control_asistencia" />
+          </Key>
+          <Property Name="Id_Control_asistencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="varchar" MaxLength="13" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+          <Property Name="matr_estudiante" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Docente">
+          <Key>
+            <PropertyRef Name="Id_Docente" />
+          </Key>
+          <Property Name="Id_Docente" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Asig_Encargado" Type="varchar" MaxLength="75" />
+        </EntityType>
+        <EntityType Name="tbl_Estudiante">
+          <Key>
+            <PropertyRef Name="Matricula" />
+          </Key>
+          <Property Name="Matricula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="50" />
+          <Property Name="Sexo" Type="varchar" MaxLength="13" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Calificacion" Type="int" />
+          <Property Name="Asignatura_activa" Type="int" />
+        </EntityType>
+        <Association Name="FK__tbl_Contr__matr___5070F446">
+          <End Role="tbl_Estudiante" Type="Self.tbl_Estudiante" Multiplicity="0..1" />
+          <End Role="tbl_Control_asistencia" Type="Self.tbl_Control_asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Estudiante">
+              <PropertyRef Name="Matricula" />
+            </Principal>
+            <Dependent Role="tbl_Control_asistencia">
+              <PropertyRef Name="matr_estudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Estud__Asign__4D94879B">
+          <End Role="tbl_Asignatura" Type="Self.tbl_Asignatura" Multiplicity="0..1" />
+          <End Role="tbl_Estudiante" Type="Self.tbl_Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Asignatura">
+              <PropertyRef Name="Id_Asignatura" />
+            </Principal>
+            <Dependent Role="tbl_Estudiante">
+              <PropertyRef Name="Asignatura_activa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GESTION_ESTUDIANTESModelStoreContainer">
+          <EntitySet Name="tbl_Asignatura" EntityType="Self.tbl_Asignatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Control_asistencia" EntityType="Self.tbl_Control_asistencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Docente" EntityType="Self.tbl_Docente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Estudiante" EntityType="Self.tbl_Estudiante" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbl_Contr__matr___5070F446" Association="Self.FK__tbl_Contr__matr___5070F446">
+            <End Role="tbl_Estudiante" EntitySet="tbl_Estudiante" />
+            <End Role="tbl_Control_asistencia" EntitySet="tbl_Control_asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Estud__Asign__4D94879B" Association="Self.FK__tbl_Estud__Asign__4D94879B">
+            <End Role="tbl_Asignatura" EntitySet="tbl_Asignatura" />
+            <End Role="tbl_Estudiante" EntitySet="tbl_Estudiante" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GESTION_ESTUDIANTESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GESTION_ESTUDIANTESEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Asignatura" EntityType="GESTION_ESTUDIANTESModel.tbl_Asignatura" />
+          <EntitySet Name="tbl_Control_asistencia" EntityType="GESTION_ESTUDIANTESModel.tbl_Control_asistencia" />
+          <EntitySet Name="tbl_Docente" EntityType="GESTION_ESTUDIANTESModel.tbl_Docente" />
+          <EntitySet Name="tbl_Estudiante" EntityType="GESTION_ESTUDIANTESModel.tbl_Estudiante" />
+          <AssociationSet Name="FK__tbl_Estud__Asign__4D94879B" Association="GESTION_ESTUDIANTESModel.FK__tbl_Estud__Asign__4D94879B">
+            <End Role="tbl_Asignatura" EntitySet="tbl_Asignatura" />
+            <End Role="tbl_Estudiante" EntitySet="tbl_Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Contr__matr___5070F446" Association="GESTION_ESTUDIANTESModel.FK__tbl_Contr__matr___5070F446">
+            <End Role="tbl_Estudiante" EntitySet="tbl_Estudiante" />
+            <End Role="tbl_Control_asistencia" EntitySet="tbl_Control_asistencia" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_Asignatura">
+          <Key>
+            <PropertyRef Name="Id_Asignatura" />
+          </Key>
+          <Property Name="Id_Asignatura" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Asig" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_Estudiante" Relationship="GESTION_ESTUDIANTESModel.FK__tbl_Estud__Asign__4D94879B" FromRole="tbl_Asignatura" ToRole="tbl_Estudiante" />
+        </EntityType>
+        <EntityType Name="tbl_Control_asistencia">
+          <Key>
+            <PropertyRef Name="Id_Control_asistencia" />
+          </Key>
+          <Property Name="Id_Control_asistencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="matr_estudiante" Type="Int32" />
+          <NavigationProperty Name="tbl_Estudiante" Relationship="GESTION_ESTUDIANTESModel.FK__tbl_Contr__matr___5070F446" FromRole="tbl_Control_asistencia" ToRole="tbl_Estudiante" />
+        </EntityType>
+        <EntityType Name="tbl_Docente">
+          <Key>
+            <PropertyRef Name="Id_Docente" />
+          </Key>
+          <Property Name="Id_Docente" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Asig_Encargado" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Estudiante">
+          <Key>
+            <PropertyRef Name="Matricula" />
+          </Key>
+          <Property Name="Matricula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Calificacion" Type="Int32" />
+          <Property Name="Asignatura_activa" Type="Int32" />
+          <NavigationProperty Name="tbl_Asignatura" Relationship="GESTION_ESTUDIANTESModel.FK__tbl_Estud__Asign__4D94879B" FromRole="tbl_Estudiante" ToRole="tbl_Asignatura" />
+          <NavigationProperty Name="tbl_Control_asistencia" Relationship="GESTION_ESTUDIANTESModel.FK__tbl_Contr__matr___5070F446" FromRole="tbl_Estudiante" ToRole="tbl_Control_asistencia" />
+        </EntityType>
+        <Association Name="FK__tbl_Estud__Asign__4D94879B">
+          <End Type="GESTION_ESTUDIANTESModel.tbl_Asignatura" Role="tbl_Asignatura" Multiplicity="0..1" />
+          <End Type="GESTION_ESTUDIANTESModel.tbl_Estudiante" Role="tbl_Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Asignatura">
+              <PropertyRef Name="Id_Asignatura" />
+            </Principal>
+            <Dependent Role="tbl_Estudiante">
+              <PropertyRef Name="Asignatura_activa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Contr__matr___5070F446">
+          <End Type="GESTION_ESTUDIANTESModel.tbl_Estudiante" Role="tbl_Estudiante" Multiplicity="0..1" />
+          <End Type="GESTION_ESTUDIANTESModel.tbl_Control_asistencia" Role="tbl_Control_asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Estudiante">
+              <PropertyRef Name="Matricula" />
+            </Principal>
+            <Dependent Role="tbl_Control_asistencia">
+              <PropertyRef Name="matr_estudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GESTION_ESTUDIANTESModelStoreContainer" CdmEntityContainer="GESTION_ESTUDIANTESEntities">
+          <EntitySetMapping Name="tbl_Asignatura">
+            <EntityTypeMapping TypeName="GESTION_ESTUDIANTESModel.tbl_Asignatura">
+              <MappingFragment StoreEntitySet="tbl_Asignatura">
+                <ScalarProperty Name="Nombre_Asig" ColumnName="Nombre_Asig" />
+                <ScalarProperty Name="Id_Asignatura" ColumnName="Id_Asignatura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Control_asistencia">
+            <EntityTypeMapping TypeName="GESTION_ESTUDIANTESModel.tbl_Control_asistencia">
+              <MappingFragment StoreEntitySet="tbl_Control_asistencia">
+                <ScalarProperty Name="matr_estudiante" ColumnName="matr_estudiante" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id_Control_asistencia" ColumnName="Id_Control_asistencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Docente">
+            <EntityTypeMapping TypeName="GESTION_ESTUDIANTESModel.tbl_Docente">
+              <MappingFragment StoreEntitySet="tbl_Docente">
+                <ScalarProperty Name="Asig_Encargado" ColumnName="Asig_Encargado" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Docente" ColumnName="Id_Docente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Estudiante">
+            <EntityTypeMapping TypeName="GESTION_ESTUDIANTESModel.tbl_Estudiante">
+              <MappingFragment StoreEntitySet="tbl_Estudiante">
+                <ScalarProperty Name="Asignatura_activa" ColumnName="Asignatura_activa" />
+                <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

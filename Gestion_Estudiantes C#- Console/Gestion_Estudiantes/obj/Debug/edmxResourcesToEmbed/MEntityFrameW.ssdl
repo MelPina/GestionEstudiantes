@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GESTION_ESTUDIANTESModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Asignatura">
+    <Key>
+      <PropertyRef Name="Id_Asignatura" />
+    </Key>
+    <Property Name="Id_Asignatura" Type="int" Nullable="false" />
+    <Property Name="Nombre_Asig" Type="varchar" MaxLength="75" />
+  </EntityType>
+  <EntityType Name="tbl_Control_asistencia">
+    <Key>
+      <PropertyRef Name="Id_Control_asistencia" />
+    </Key>
+    <Property Name="Id_Control_asistencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="varchar" MaxLength="13" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="matr_estudiante" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Docente">
+    <Key>
+      <PropertyRef Name="Id_Docente" />
+    </Key>
+    <Property Name="Id_Docente" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Asig_Encargado" Type="varchar" MaxLength="75" />
+  </EntityType>
+  <EntityType Name="tbl_Estudiante">
+    <Key>
+      <PropertyRef Name="Matricula" />
+    </Key>
+    <Property Name="Matricula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="50" />
+    <Property Name="Sexo" Type="varchar" MaxLength="13" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Calificacion" Type="int" />
+    <Property Name="Asignatura_activa" Type="int" />
+  </EntityType>
+  <Association Name="FK__tbl_Contr__matr___5070F446">
+    <End Role="tbl_Estudiante" Type="Self.tbl_Estudiante" Multiplicity="0..1" />
+    <End Role="tbl_Control_asistencia" Type="Self.tbl_Control_asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Estudiante">
+        <PropertyRef Name="Matricula" />
+      </Principal>
+      <Dependent Role="tbl_Control_asistencia">
+        <PropertyRef Name="matr_estudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Estud__Asign__4D94879B">
+    <End Role="tbl_Asignatura" Type="Self.tbl_Asignatura" Multiplicity="0..1" />
+    <End Role="tbl_Estudiante" Type="Self.tbl_Estudiante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Asignatura">
+        <PropertyRef Name="Id_Asignatura" />
+      </Principal>
+      <Dependent Role="tbl_Estudiante">
+        <PropertyRef Name="Asignatura_activa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GESTION_ESTUDIANTESModelStoreContainer">
+    <EntitySet Name="tbl_Asignatura" EntityType="Self.tbl_Asignatura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Control_asistencia" EntityType="Self.tbl_Control_asistencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Docente" EntityType="Self.tbl_Docente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Estudiante" EntityType="Self.tbl_Estudiante" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tbl_Contr__matr___5070F446" Association="Self.FK__tbl_Contr__matr___5070F446">
+      <End Role="tbl_Estudiante" EntitySet="tbl_Estudiante" />
+      <End Role="tbl_Control_asistencia" EntitySet="tbl_Control_asistencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Estud__Asign__4D94879B" Association="Self.FK__tbl_Estud__Asign__4D94879B">
+      <End Role="tbl_Asignatura" EntitySet="tbl_Asignatura" />
+      <End Role="tbl_Estudiante" EntitySet="tbl_Estudiante" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

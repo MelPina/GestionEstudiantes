@@ -1,0 +1,12 @@
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\obj\Debug\Gestion_Estudiantes.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\obj\Debug\Gestion_Estudiantes.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\bin\Debug\Gestion_Estudiantes.exe.config
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\bin\Debug\Gestion_Estudiantes.exe
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\bin\Debug\Gestion_Estudiantes.pdb
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\obj\Debug\Gestion_Estudiantes.csproj.CopyComplete
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\obj\Debug\Gestion_Estudiantes.exe
+C:\Users\Admin\Desktop\Gestion_Estudiantes\Gestion_Estudiantes\obj\Debug\Gestion_Estudiantes.pdb
